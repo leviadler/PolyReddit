@@ -3,4 +3,6 @@ class Post < ActiveRecord::Base
   
   belongs_to :submitter, class_name: "User", foreign_key: :submitter_id, primary_key: :id
   belongs_to :sub
+  
+  has_many :comments
 end

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   
   has_many :subs, class_name: "Sub", foreign_key: :moderator_id, primary_key: :id
   has_many :posts, class_name: "Post", foreign_key: :submitter_id, primary_key: :id
+  has_many :comments, class_name: "Comment", foreign_key: :submitter_id, primary_key: :id
   
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)

@@ -2,11 +2,15 @@ RedditClone::Application.routes.draw do
   resources :users
   resource :session
   
-  shallow do
-    resources :subs do
-      resources :posts
+
+  resources :subs do
+    resources :posts, shallow: true do
+      resources :comments, only: [:new]
     end
   end
+  
+  resources :comments, only: [:create]
+
   
   root to: "subs#index"
   
