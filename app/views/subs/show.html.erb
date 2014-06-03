@@ -5,3 +5,12 @@
 <% if sub_belongs_to(current_user) %>
 <a href="<%= edit_sub_url(@sub)  %>">Edit Sub</a>
 <% end %>
+
+<%= link_to "New Post", new_sub_post_url(@sub) %>
+
+<h2>Posts:</h2>
+<ul>
+  <% @sub.posts.each do |post| %>
+  <li><%= link_to post.title, post_url(post) %></li>
+  <% end %>
+</ul>

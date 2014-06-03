@@ -2,7 +2,11 @@ RedditClone::Application.routes.draw do
   resources :users
   resource :session
   
-  resources :subs
+  shallow do
+    resources :subs do
+      resources :posts
+    end
+  end
   
   root to: "subs#index"
   

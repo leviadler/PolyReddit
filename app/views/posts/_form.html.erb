@@ -1,0 +1,38 @@
+<% action = post.persisted? ? post_url(post) : sub_posts_url(params[:sub_id]) %>
+<% button = post.persisted? ? "Update Post" : "Create Post" %>
+
+<%= render_errors %>
+<form action="<%= action %>" method="POST">
+  
+  <%= auth_token_input %>
+  
+  <% if post.persisted? %>
+  <input type="hidden" name="_method", value="patch">
+  <% end %>
+  
+  <label>
+    Title: (required)
+    <input type="text" name="post[title]" value="<%= post.title %>">
+  </label>
+  
+  <br>
+  
+  <label>
+    Url
+    <input type="text" name="post[url]" value="<%= post.url %>">
+  </label>
+  
+  <br>
+  
+  <label>
+    Content:
+    <br>
+    <textarea name="post[content]"><%= post.content %></textarea>
+  </label>
+  
+  <br>
+  
+  <input type="submit" value="<%= button %>">
+  
+</form>
+  
