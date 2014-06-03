@@ -18,11 +18,8 @@
 
 <br>
 <h3>Comments:</h3>
-<%= link_to "New Comment", new_post_comment_url(@post) %>
+<%= link_to "New Comment on Post", new_post_comment_url(@post) %>
 <br>
-<% @post.comments.each do |comment| %>
-<p>-------------------------</p>
-<p><%= comment.content %></p>
-<p>Posted by: <%= comment.submitter.email %>
-
+<% @post.top_level_comments.each do |comment| %>
+<%= render comment %>
 <% end %>

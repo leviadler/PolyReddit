@@ -1,0 +1,12 @@
+<p>-------------------------</p>
+<p><%= comment.content %></p>
+<p>Posted by: <%= comment.submitter.email %></p>
+<%= link_to "New Comment", new_comment_comment_url(comment) %>
+
+<% if comment.child_comments %>
+<ul>
+  <% comment.child_comments.each do |comment| %>
+  <li><%= render comment %></li>
+  <% end %>
+</ul>
+<% end %>

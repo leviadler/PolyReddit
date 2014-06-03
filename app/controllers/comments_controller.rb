@@ -2,11 +2,15 @@ class CommentsController < ApplicationController
   
   before_action :require_signed_in
   
-  def new 
+  def new
+    @comment = Comment.new(parent_comment_id: params[:comment_id],
+                            post_id: params[:post_id])
+
   end
   
   def create
     @comment = current_user.comments.new(comment_params)
+    @comment.post_id = @comment.parent_comment.post_id
     
     if @comment.save
       flash[:notice] = "Comment Added"
@@ -19,6 +23,6 @@ class CommentsController < ApplicationController
   
   private
   def comment_params
-    params.require(:comment).permit(:content, :post_id)
+    params.require(:comment).permit(:content, :post_id, :parent_comment_id)
   end
 end

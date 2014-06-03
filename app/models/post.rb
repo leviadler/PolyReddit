@@ -5,4 +5,9 @@ class Post < ActiveRecord::Base
   belongs_to :sub
   
   has_many :comments
+  
+  has_many :top_level_comments, 
+            -> { where "parent_comment_id IS NULL" },
+            class_name: "Comment", 
+            foreign_key: :post_id
 end
