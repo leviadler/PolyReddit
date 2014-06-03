@@ -1,0 +1,7 @@
+<h1><%= @sub.title %></h1>
+<%= @sub.description %>
+
+<p>Moderator: <%= @sub.moderator.email %></p>
+<% if sub_belongs_to(current_user) %>
+<a href="<%= edit_sub_url(@sub)  %>">Edit Sub</a>
+<% end %>

@@ -1,0 +1,32 @@
+<% action = sub.persisted? ? sub_url(sub) : subs_url %>
+<% button = sub.persisted? ? "Update Sub" : "Create Sub" %>
+
+
+<%= render_errors %>
+<form action="<%= action %>" method="POST">
+  
+  <%= auth_token_input %>
+  
+  <% if sub.persisted? %>
+  <input type="hidden" name="_method" value="patch">
+  <% end %>
+  
+  <label>
+    Title:
+    <input type="text" name="sub[title]" value="<%= sub.title %>">
+  </label>
+  
+  <br>
+  
+  <label>
+    Description:
+    <input type="text" name="sub[description]" value="<%= sub.description %>">
+  </label>
+  
+  <br>
+  
+  <input type="submit" value="<%= button %>">
+  
+</form>
+  
+  

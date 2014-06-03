@@ -2,7 +2,9 @@ RedditClone::Application.routes.draw do
   resources :users
   resource :session
   
-  root to: "users#new"
+  resources :subs
+  
+  root to: "subs#index"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
