@@ -40,6 +40,7 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    @all_comments = Comment.where(post_id: @post.id).includes(:submitter)
   end
   
   private

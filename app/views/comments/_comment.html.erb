@@ -1,6 +1,6 @@
 <p>-------------------------</p>
 <p><%= comment.content %></p>
-<p>Posted by: <%= comment.submitter.email %></p>
+<p>Posted by: <%= comment.submitter.email %> - <%= time_ago_in_words(comment.created_at) %> ago</p>
 <%= link_to "New Comment", new_comment_comment_url(comment) %>
 
 <% if comment.child_comments %>
