@@ -1,10 +1,10 @@
 <h1><%= @post.title %></h1>
 
 <ul>
-  <li>Posted by: <%= @post.submitter.email %>  -  
+  <li>Posted by: <%= @post.submitter.email %>  -
     <%= time_ago_in_words(@post.created_at) %> ago</li>
   <li>Url: <%= @post.url %></li>
-  
+
 </ul>
 
 <p><%= @post.content %></p>
@@ -20,6 +20,8 @@
 <h3>Comments:</h3>
 <%= link_to "New Comment on Post", new_post_comment_url(@post) %>
 <br>
-<% @post.top_level_comments.each do |comment| %>
-<%= render comment %>
+
+<% @all_comments.each do |c1| %>
+<% next if c1.parent_comment_id %>
+<%= render 'comments/comment', c1: c1 %>
 <% end %>

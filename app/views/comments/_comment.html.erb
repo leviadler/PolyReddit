@@ -1,12 +1,14 @@
 <p>-------------------------</p>
-<p><%= comment.content %></p>
-<p>Posted by: <%= comment.submitter.email %> - <%= time_ago_in_words(comment.created_at) %> ago</p>
-<%= link_to "New Comment", new_comment_comment_url(comment) %>
+<p><%= c1.content %></p>
+<p>Posted by: <%= c1.submitter.email %> - <%= time_ago_in_words(c1.created_at) %> ago</p>
+<%= link_to "New Comment", new_comment_comment_url(c1) %>
 
-<% if comment.child_comments %>
+
+
 <ul>
-  <% comment.child_comments.each do |comment| %>
-  <li><%= render comment %></li>
+  <% @all_comments.each do |c2| %>
+    <% if c2.parent_comment_id == c1.id %>
+      <li><%= render 'comments/comment', c1: c2 %></li>
+    <% end %>
   <% end %>
 </ul>
-<% end %>
