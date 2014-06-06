@@ -1,4 +1,6 @@
 <p>-------------------------</p>
+(<%= c1.sum_votes %>)
+<%= render 'votes/buttons', action: comment_vote_url(c1) %>
 <p><%= c1.content %></p>
 <p>Posted by: <%= c1.submitter.email %> - <%= time_ago_in_words(c1.created_at) %> ago</p>
 <%= link_to "New Comment", new_comment_comment_url(c1) %>

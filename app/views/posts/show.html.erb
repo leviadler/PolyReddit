@@ -1,4 +1,4 @@
-<h1><%= @post.title %></h1>
+<h1>(<%= @post.sum_votes %>) <%= @post.title %></h1>
 
 <ul>
   <li>Posted by: <%= @post.submitter.email %>  -
@@ -6,6 +6,7 @@
   <li>Url: <%= @post.url %></li>
 
 </ul>
+<%= render 'votes/buttons', action: post_vote_url(@post) %>
 
 <p><%= @post.content %></p>
 

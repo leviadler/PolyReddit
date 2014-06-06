@@ -40,7 +40,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @all_comments = Comment.where(post_id: @post.id).includes(:submitter)
+    @all_comments = Comment.where(post_id: @post.id).includes(:submitter, :votes)
     @all_comments_hash = hashify_comments(@all_comments)
   end
 
@@ -64,6 +64,11 @@ class PostsController < ApplicationController
     comments_hash = Hash.new { |h, k| h[k] = Array.new }
     comments.each do |comment|
       comments_hash[comment.parent_comment_id] << comment
+    end
+
+    # for sorting by vote, may cause n+1?
+    comments_hash.each do |parent, comments|
+      comments.sort! {|x,y| y.sum_votes <=> x.sum_votes }
     end
     comments_hash
   end

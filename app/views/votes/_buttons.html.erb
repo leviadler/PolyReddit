@@ -1,0 +1,10 @@
+  <form action="<%= action %>" method="POST">
+    <%= auth_token_input %>
+    <input type="hidden" name="vote[value]" value="1">
+    <input type="submit" value="Up">
+  </form>
+  <form action="<%= action %>" method="POST">
+    <%= auth_token_input %>
+    <input type="hidden" name="vote[value]" value="-1">
+    <input type="submit" value="Down">
+  </form>

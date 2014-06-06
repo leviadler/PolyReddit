@@ -10,7 +10,11 @@
 
 <h2>Posts:</h2>
 <ul>
-  <% @sub.posts.each do |post| %>
-  <li><%= link_to post.title, post_url(post) %></li>
+  <% @posts.each do |post| %>
+  <li>
+    (<%= post.sum_votes %>)
+    <%= link_to post.title, post_url(post) %>
+    <%= render 'votes/buttons', action: post_vote_url(post) %>
+  </li>
   <% end %>
 </ul>
