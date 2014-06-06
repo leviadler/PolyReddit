@@ -6,9 +6,7 @@
 
 
 <ul>
-  <% @all_comments.each do |c2| %>
-    <% if c2.parent_comment_id == c1.id %>
-      <li><%= render 'comments/comment', c1: c2 %></li>
-    <% end %>
+  <% @all_comments_hash[c1.id].each do |c2| %>
+    <li><%= render 'comments/comment', c1: c2 %></li>
   <% end %>
 </ul>

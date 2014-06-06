@@ -61,7 +61,7 @@ class PostsController < ApplicationController
   end
 
   def hashify_comments(comments)
-    comments_hash = Hash.new(Array.new)
+    comments_hash = Hash.new { |h, k| h[k] = Array.new }
     comments.each do |comment|
       comments_hash[comment.parent_comment_id] << comment
     end

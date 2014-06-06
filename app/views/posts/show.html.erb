@@ -21,7 +21,6 @@
 <%= link_to "New Comment on Post", new_post_comment_url(@post) %>
 <br>
 
-<% @all_comments.each do |c1| %>
-<% next if c1.parent_comment_id %>
+<% @all_comments_hash[nil].each do |c1| %>
 <%= render 'comments/comment', c1: c1 %>
 <% end %>
