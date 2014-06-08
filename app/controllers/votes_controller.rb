@@ -1,6 +1,7 @@
 class VotesController < ApplicationController
 
   def create
+    #TODO refactor to only let user vote up or down once
     @voteable = find_votable
     @vote = @voteable.votes.new(vote_params.merge({user_id: current_user.id}))
 
