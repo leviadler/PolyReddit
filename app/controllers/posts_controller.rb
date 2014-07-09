@@ -66,7 +66,6 @@ class PostsController < ApplicationController
       comments_hash[comment.parent_comment_id] << comment
     end
 
-    # for sorting by vote, may cause n+1?
     comments_hash.each do |parent, comments|
       comments.sort! {|x,y| y.sum_votes <=> x.sum_votes }
     end
